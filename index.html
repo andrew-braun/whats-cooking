@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>What's Cooking?</title>
+		<script
+			src="https://kit.fontawesome.com/9966c2ab14.js"
+			crossorigin="anonymous"
+		></script>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="home-container">
+			<h1>What's Cooking?</h1>
+			<div class="search flex-wrapper">
+				<form class="search__form flex-wrapper" id="search-form">
+					<input
+						type="text"
+						class="search__input"
+						id="search"
+						placeholder="Look for a meal, ingredient, or other keyword!"
+					/>
+					<button class="search__submit" type="submit">
+						<i class="fas fa-search"></i>
+					</button>
+				</form>
+				<button class="search__random" id="random">
+					<i class="fas fa-random"></i>
+				</button>
+			</div>
+			<div class="search-results">
+				<div id="search-results__heading"></div>
+				<div class="search-results__meals" id="meals"></div>
+				<div class="search-results__meal" id="meal"></div>
+			</div>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
