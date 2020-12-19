@@ -17,7 +17,9 @@ const fetchRecipe = async (search) => {
 		const responseObject = await response.json();
 		const meals = await responseObject.meals;
 
-		if (meals.length > 1) {
+		if (meals === null) {
+			searchResultsHeading.innerHTML = `<p class="search-results-heading">Sorry, no results found for '${currentSearchTerm}'</p>`;
+		} else if (meals.length > 1) {
 			await renderMealResults(meals, search);
 		} else if (meals.length === 1) {
 			await renderSelectedMeal(meals);
@@ -36,14 +38,14 @@ const renderMealResults = (meals) => {
                                       </h2>`;
 	mealResultsElement.innerHTML = meals
 		.map((meal) => {
-			return `<div class="recipe-card">
+			return `<div class="recipe-card" data-mealID="${meal.idMeal}">
                         <div class="recipe-card__info" style="background-image: url('${meal.strMealThumb}');">
                             <div class="recipe-card__info-wrapper">
                                 <span class="recipe-card__area">${meal.strArea} | </span>
                                 <span class="recipe-card__category">${meal.strCategory}</span>
-                            </div>
+							</div>
+							<div class="recipe-card__name">${meal.strMeal}</div>
                         </div>
-                        <div class="recipe-card__name">${meal.strMeal}</div>
                     </div>`;
 		})
 		.join("");
@@ -62,6 +64,7 @@ const handleSubmit = (event) => {
 	event.preventDefault();
 
 	currentSearchTerm = searchInputElement.value;
+	searchInputElement.value = "";
 
 	if (!currentSearchTerm.trim()) {
 		alert("Please enter a search term");
