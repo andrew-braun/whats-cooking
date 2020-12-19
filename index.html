@@ -21,18 +21,23 @@
 						id="search"
 						placeholder="Look for a meal, ingredient, or other keyword!"
 					/>
-					<button class="search__submit" type="submit">
+					<button
+						class="search__submit"
+						type="submit"
+						id="search-submit"
+						tabindex="-1"
+					>
 						<i class="fas fa-search"></i>
 					</button>
 				</form>
-				<button class="search__random" id="random">
+				<button class="search__random" id="search-random">
 					<i class="fas fa-random"></i>
 				</button>
 			</div>
 			<div class="search-results">
-				<div id="search-results__heading"></div>
-				<div class="search-results__meals" id="meals"></div>
-				<div class="search-results__meal" id="meal"></div>
+				<div id="search-results-heading"></div>
+				<div class="search-results__meals" id="meal-results"></div>
+				<div class="search-results__meal" id="selected-meal"></div>
 			</div>
 		</div>
 		<script src="script.js"></script>
