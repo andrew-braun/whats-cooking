@@ -214,6 +214,15 @@ button {
 	border-radius: 0.3rem;
 }
 
+/* Modification Classes */
+.closed {
+	display: none;
+}
+
+.open {
+	display: block;
+}
+
 // . @media (max-width: 800px) {
 // }
 

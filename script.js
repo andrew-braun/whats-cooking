@@ -111,8 +111,16 @@ const getMealByID = (id) => {
 	return selectedMeal;
 };
 
+const handleSelectedMealClose = () => {
+	selectedMealElement.classList.remove("open");
+	selectedMealElement.classList.add("closed");
+};
+
 // Render single selected meal HTML
 const renderSelectedMeal = (meal) => {
+	selectedMealElement.classList.add("open");
+	selectedMealElement.classList.remove("closed");
+
 	const {
 		strMeal,
 		strCategory,
@@ -152,6 +160,7 @@ const renderSelectedMeal = (meal) => {
 		})
 		.join("");
 	selectedMealElement.innerHTML = `
+	<button class="selected-meal--close-button" id="selected-meal-close-button">X</button>
 	<h2>${meal.strMeal}</h2>
 	<div class="selected-meal__info">
 		<div class="selected_meal__basic-info">
@@ -174,6 +183,10 @@ const renderSelectedMeal = (meal) => {
 	</div>
 
 	`;
+
+	selectedMealElement
+		.querySelector("#selected-meal-close-button")
+		.addEventListener("click", handleSelectedMealClose);
 };
 
 renderSelectedMeal(testMeal);
