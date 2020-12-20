@@ -67,7 +67,7 @@ const handleSubmit = (event) => {
 	searchInputElement.value = "";
 
 	if (!currentSearchTerm.trim()) {
-		alert("Please enter a search term");
+		searchResultsHeading.innerHTML = `<p class="results-heading--error">Hm, looks there are no recipes that use "nothing" as an ingredient. If you search for food you'll probably get better results!</p>`;
 		return;
 	}
 
