@@ -160,8 +160,14 @@ const renderSelectedMeal = (meal) => {
 		</div>
 		 <a href="${strYoutube}"><i class="fab fa-youtube"></i></a>
 	</div>
-	<div class="selected-meal__ingredients">
-		${ingredientList}
+	<div class="selected-meal__top">
+		<div class="selected-meal__ingredients">
+			<h3>Ingredients</h3>
+			<ul class="selected-meal__ingredient-list">
+				${ingredientList}
+			</ul>
+		</div>
+		<img src=${strMealThumb} alt=${strMeal} class="selected-meal__image"/>
 	</div>
 	<div class="selected-meal__instructions">
 		<p>${strInstructions}</p>

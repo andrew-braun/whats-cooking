@@ -168,9 +168,9 @@ button {
 /* Selected meal details */
 .selected-meal {
 	position: absolute;
-	top: 100px;
+	top: 0;
 	left: 0;
-	height: 100%;
+
 	width: 100%;
 	background: hsla(0, 0%, 0%, 0.8);
 	color: white;
@@ -190,6 +190,28 @@ button {
 .selected-meal .fa-youtube {
 	margin: 0;
 	font-size: 3rem;
+}
+
+.selected-meal__top {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.selected-meal__ingredients {
+	flex: 1 1 20rem;
+}
+
+.selected-meal__ingredient-list {
+	list-style: none;
+	text-align: left;
+}
+
+.selected-meal__image {
+	flex: 1 1 auto;
+	width: clamp(10rem, 13rem, 18rem);
+	margin: 2rem;
+	border-radius: 0.3rem;
 }
 
 // . @media (max-width: 800px) {
