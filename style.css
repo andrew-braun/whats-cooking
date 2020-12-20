@@ -64,6 +64,10 @@ button {
 	color: var(button-1-text);
 }
 
+.fa-youtube {
+	color: hsla(0, 100%, 50%, 1);
+}
+
 .flex-wrapper {
 	display: flex;
 }
@@ -103,6 +107,9 @@ button {
 }
 
 /* Search results styles */
+.search-results {
+	position: relative;
+}
 .search-results-heading__text--term {
 	color: var(--accent-1);
 	font-size: 130%;
@@ -157,6 +164,34 @@ button {
 .recipe-card__info-wrapper {
 	background: hsla(0, 0%, 0%, 0.4);
 }
+
+/* Selected meal details */
+.selected-meal {
+	position: absolute;
+	top: 100px;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: hsla(0, 0%, 0%, 0.8);
+	color: white;
+}
+
+.selected-meal__info {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.5rem 2rem;
+	background: hsla(0, 0%, 0%, 0.5);
+}
+
+.selected_meal__basic-info {
+}
+
+.selected-meal .fa-youtube {
+	margin: 0;
+	font-size: 3rem;
+}
+
 // . @media (max-width: 800px) {
 // }
 
