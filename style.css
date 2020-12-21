@@ -215,6 +215,17 @@ button {
 	align-items: center;
 }
 
+.selected-meal--close-button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: filter 0.3s ease-in-out;
+}
+
+.selected-meal--close-button:hover {
+	filter: brightness(1.1);
+}
+
 .selected-meal__ingredients {
 	flex: 1 1 20rem;
 }
