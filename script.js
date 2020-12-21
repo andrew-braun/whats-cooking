@@ -152,6 +152,21 @@ const processMealIngredients = (meal) => {
 	return ingredients;
 };
 
+const generateIngredientList = (ingredients) => {
+	const ingredientList = ingredients
+		.map((item) => {
+			return `
+			<li><span class="ingredient-list__ingredient">${item.ingredient}</span>${
+				item.measure
+					? ` - <span class="ingredient-list__measure">${item.measure}</span>`
+					: ""
+			}</li>
+		`;
+		})
+		.join("");
+	return ingredientList;
+};
+
 // Render single selected meal HTML
 const renderSelectedMeal = (meal) => {
 	// Open meal modal
@@ -169,19 +184,12 @@ const renderSelectedMeal = (meal) => {
 		strSource,
 	} = meal;
 
+	// Split the weird ingredient/measure format into readable object array
 	const ingredients = processMealIngredients(meal);
+	// Generate HTML for list of ingredients to add in later
+	const ingredientList = generateIngredientList(ingredients);
 
-	const ingredientList = ingredients
-		.map((item) => {
-			return `
-			<li><span class="ingredient-list__ingredient">${item.ingredient}</span>${
-				item.measure
-					? ` - <span class="ingredient-list__measure">${item.measure}</span>`
-					: ""
-			}</li>
-		`;
-		})
-		.join("");
+	// Set the main content for the meal recipe modal
 	selectedMealElement.innerHTML = `
 	<button class="selected-meal--close-button" id="selected-meal-close-button">X</button>
 	<h2>${meal.strMeal}</h2>
@@ -206,10 +214,6 @@ const renderSelectedMeal = (meal) => {
 	</div>
 
 	`;
-
-	selectedMealElement
-		.querySelector("#selected-meal-close-button")
-		.addEventListener("click", handleSelectedMealClose);
 };
 
 renderSelectedMeal(testMeal);
@@ -259,3 +263,8 @@ searchInputElement.addEventListener("input", handleInputChange);
 submitButtonElement.addEventListener("click", handleSubmit);
 randomButtonElement.addEventListener("click", handleRandom);
 mealResultsElement.addEventListener("click", handleMealSelect);
+window.addEventListener("click", (event) => {
+	event.target.id === "selected-meal-close-button"
+		? handleSelectedMealClose()
+		: null;
+});
