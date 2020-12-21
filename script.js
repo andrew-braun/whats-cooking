@@ -191,28 +191,30 @@ const renderSelectedMeal = (meal) => {
 
 	// Set the main content for the meal recipe modal
 	selectedMealElement.innerHTML = `
-	<button class="selected-meal--close-button" id="selected-meal-close-button">X</button>
-	<h2>${meal.strMeal}</h2>
+
+	
 	<div class="selected-meal__info">
-		<div class="selected_meal__basic-info">
-			<span class="selected-meal__area">${strArea}</span> | 
-		 	<span class="selected-meal__category">${strCategory}</span>
-		</div>
+		<button class="selected-meal--close-button" id="selected-meal-close-button">X</button>
+		
+		<h2>${meal.strMeal}</h2>
 		 <a href="${strYoutube}"><i class="fab fa-youtube"></i></a>
 	</div>
-	<div class="selected-meal__top">
-		<div class="selected-meal__ingredients">
-			<h3>Ingredients</h3>
-			<ul class="selected-meal__ingredient-list">
-				${ingredientList}
-			</ul>
+	<div class="selected-meal__body">
+		<div class="selected-meal__top">
+			<div class="selected-meal__ingredients">
+				<h3 class="selected-meal__inredients-title">Ingredients</h3>
+				<ul class="selected-meal__ingredient-list">
+					${ingredientList}
+				</ul>
+			</div>
+			<div class="selected-meal__image-container">
+				<img src=${strMealThumb} alt=${strMeal} class="selected-meal__image"/>
+			</div>
 		</div>
-		<img src=${strMealThumb} alt=${strMeal} class="selected-meal__image"/>
+		<div class="selected-meal__instructions">
+			<p>${strInstructions}</p>
+		</div>
 	</div>
-	<div class="selected-meal__instructions">
-		<p>${strInstructions}</p>
-	</div>
-
 	`;
 };
 
@@ -239,8 +241,6 @@ const handleSubmit = (event) => {
 
 // Trigger API call with random function
 const handleRandom = (event) => {
-	selectedMealElement.innerHTML = ``;
-
 	fetchRecipe(`random.php`);
 };
 
@@ -251,10 +251,10 @@ const handleKeyPress = (event) => {
 	}
 };
 
+// Get meal id from clicked recipe in recipe-list
 const handleMealSelect = (event) => {
 	const mealID = event.target.closest(".recipe-card").dataset.mealid;
 	selectedMeal = getMealByID(mealID);
-	console.log(selectedMeal);
 	renderSelectedMeal(selectedMeal);
 };
 
