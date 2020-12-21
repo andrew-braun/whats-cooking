@@ -195,14 +195,16 @@ const renderSelectedMeal = (meal) => {
 	
 	<div class="selected-meal__info">
 		<button class="selected-meal--close-button" id="selected-meal-close-button">X</button>
-		
-		<h2>${meal.strMeal}</h2>
-		 <a href="${strYoutube}"><i class="fab fa-youtube"></i></a>
+		<div class="selected-meal__title-container">
+			<h2>${meal.strMeal}</h2>
+			<a href="${strYoutube}" class="selected-meal__youtube"><i class="fab fa-youtube"></i></a>
+		</div>
+		 
 	</div>
 	<div class="selected-meal__body">
 		<div class="selected-meal__top">
 			<div class="selected-meal__ingredients">
-				<h3 class="selected-meal__inredients-title">Ingredients</h3>
+				<h3 class="selected-meal__ingredients-title">Ingredients</h3>
 				<ul class="selected-meal__ingredient-list">
 					${ingredientList}
 				</ul>

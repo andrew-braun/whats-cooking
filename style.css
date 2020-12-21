@@ -111,6 +111,7 @@ button {
 .search-results {
 	position: relative;
 }
+
 .search-results-heading__text--term {
 	color: var(--accent-1);
 	font-size: 130%;
@@ -195,17 +196,39 @@ button {
 .selected-meal__info {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 	height: 4rem;
 	background: hsla(0, 0%, 0%, 0.5);
 }
 
-.selected_meal__basic-info {
+.selected-meal__title-container {
+	display: flex;
+	align-items: center;
+	margin: auto;
+	height: 100%;
 }
 
-.selected-meal .fa-youtube {
-	margin: 0;
+.selected-meal__youtube {
+	margin: 0 1rem;
 	font-size: 3rem;
+	transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.selected-meal__youtube:hover {
+	opacity: 0.85;
+	transform: scale(0.95);
+}
+
+.selected-meal--close-button {
+	justify-self: flex-start;
+	height: 100%;
+	padding: 0;
+	font-size: 2rem;
+	transition: filter 0.3s ease-in-out;
+}
+
+.selected-meal--close-button:hover {
+	filter: brightness(1.1);
 }
 
 .selected-meal__body {
@@ -218,18 +241,6 @@ button {
 	justify-content: center;
 }
 
-.selected-meal--close-button {
-	align-self: flex-start;
-	height: 100%;
-	padding: 0;
-	font-size: 2rem;
-	transition: filter 0.3s ease-in-out;
-}
-
-.selected-meal--close-button:hover {
-	filter: brightness(1.1);
-}
-
 .selected-meal__ingredients {
 	flex: 1 1 20rem;
 	display: flex;
@@ -239,7 +250,7 @@ button {
 	max-width: 30rem;
 }
 
-.selected-meal__inredients-title {
+.selected-meal__ingredients-title {
 	font-size: 1.8rem;
 	margin: 0;
 }
