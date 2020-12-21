@@ -112,26 +112,28 @@ const getMealByID = (id) => {
 	return selectedMeal;
 };
 
+const openSelectedMeal = () => {
+	selectedMealElement.classList.add("open");
+	selectedMealElement.classList.remove("closed");
+};
+
 const handleSelectedMealClose = () => {
 	selectedMealElement.classList.remove("open");
 	selectedMealElement.classList.add("closed");
 };
 
-// Render single selected meal HTML
-const renderSelectedMeal = (meal) => {
-	selectedMealElement.classList.add("open");
-	selectedMealElement.classList.remove("closed");
+const processMealIngredients = (meal) => {
+	/* Meal object contains ingredients and measures in this structure:
+		{
+			strIngredient1: "flour",
+			strIngredient2: "butter",
+			strMeasure1: "2 cups",
+			strMeasure2: "1 stick",
+		}
 
-	const {
-		strMeal,
-		strCategory,
-		strArea,
-		strInstructions,
-		strMealThumb,
-		strTags,
-		strYoutube,
-		strSource,
-	} = meal;
+		So we have to iterate over it, find every strIngredient{num} and its corresponing measure,
+		adding it to a new array of ingredients and corresponding measures.
+	*/
 
 	const ingredients = [];
 
@@ -145,9 +147,29 @@ const renderSelectedMeal = (meal) => {
 				measure: currentMeasure,
 			};
 			ingredients.push(ingredient);
-			console.log(ingredient);
 		}
 	}
+	return ingredients;
+};
+
+// Render single selected meal HTML
+const renderSelectedMeal = (meal) => {
+	// Open meal modal
+	openSelectedMeal();
+
+	//Destructure meal object
+	const {
+		strMeal,
+		strCategory,
+		strArea,
+		strInstructions,
+		strMealThumb,
+		strTags,
+		strYoutube,
+		strSource,
+	} = meal;
+
+	const ingredients = processMealIngredients(meal);
 
 	const ingredientList = ingredients
 		.map((item) => {
