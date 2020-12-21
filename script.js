@@ -87,16 +87,17 @@ const fetchRecipe = async (search) => {
 
 // Render HTML list of meals
 const renderMealResults = (meals) => {
+	// Change search results heading to include query
 	searchResultsHeading.innerHTML = `<h2 class="search-results-heading__text">
-                                        Search results for 
-                                        <span class="search-results-heading__text--term">${currentSearchTerm}</span>
-                                      </h2>`;
+			Search results for 
+			<span class="search-results-heading__text--term">${currentSearchTerm}</span>
+		</h2>`;
 	mealResultsElement.innerHTML = meals
 		.map((meal) => {
 			return `<div class="recipe-card" data-mealID="${meal.idMeal}">
                         <div class="recipe-card__info" style="background-image: url('${meal.strMealThumb}');">
                             <div class="recipe-card__info-wrapper">
-                                <span class="recipe-card__area">${meal.strArea} | </span>
+                                <span class="recipe-card__area">${meal.strArea}</span>
                                 <span class="recipe-card__category">${meal.strCategory}</span>
 							</div>
 							<div class="recipe-card__name">${meal.strMeal}</div>

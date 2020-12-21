@@ -8,7 +8,8 @@
 	--text-2: white;
 	--button-1: hsla(48, 75%, 52%, 1);
 	--button-1-text: white;
-	--card-bg-1: hsla(48, 75%, 52%, 0.8);
+	--card-bg-1: hsla(48, 75%, 52%, 0.6);
+	--card-bg-2: hsla(346, 84%, 44%, 0.7);
 	--accent-1: hsla(346, 84%, 44%, 1);
 	--carmine-m-p: hsla(346, 84%, 44%, 1);
 	--green-blue-crayola: hsla(207, 70%, 48%, 1);
@@ -140,9 +141,8 @@ button {
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
-	background: var(--card-bg-1);
+	background: hsla(0, 0%, 0%, 0.5);
 	font-size: 1.2rem;
-	color: black;
 }
 
 .recipe-card__info {
@@ -162,7 +162,24 @@ button {
 }
 
 .recipe-card__info-wrapper {
-	background: hsla(0, 0%, 0%, 0.4);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	background: hsla(0, 0%, 0%, 0.3);
+
+	font-size: 0.8rem;
+}
+
+.recipe-card__area {
+	flex: 1 1 50%;
+	font-family: "Merienda";
+	background: var(--card-bg-2);
+}
+
+.recipe-card__category {
+	flex: 1 1 50%;
+	background: var(--card-bg-1);
 }
 
 /* Selected meal details */
