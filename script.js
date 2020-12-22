@@ -113,8 +113,8 @@ const getMealByID = (id) => {
 };
 
 const openSelectedMeal = () => {
-	selectedMealElement.classList.add("open");
-	selectedMealElement.classList.remove("closed");
+	selectedMealElement.classList.remove("closed", "fade-out");
+	selectedMealElement.classList.add("open", "fade-in");
 
 	/* Set timeout to make sure state isn't instantly set to true,
 		as window click event listener will immediately fire the close method
@@ -128,9 +128,14 @@ const openSelectedMeal = () => {
 };
 
 const handleSelectedMealClose = () => {
+	selectedMealElement.classList.remove("open", "fade-in");
+	selectedMealElement.classList.add("fade-out");
+
+	selectedMealElement.onanimationend = () => {
+		!selectedMealIsOpen ? selectedMealElement.classList.add("closed") : null;
+	};
+
 	selectedMealIsOpen = false;
-	selectedMealElement.classList.remove("open");
-	selectedMealElement.classList.add("closed");
 };
 
 const processMealIngredients = (meal) => {
@@ -266,9 +271,11 @@ const handleKeyPress = (event) => {
 
 // Get meal id from clicked recipe in recipe-list
 const handleMealSelect = (event) => {
-	const mealID = event.target.closest(".recipe-card").dataset.mealid;
-	selectedMeal = getMealByID(mealID);
-	renderSelectedMeal(selectedMeal);
+	if (event.target.id !== "meal-results") {
+		const mealID = event.target.closest(".recipe-card").dataset.mealid;
+		selectedMeal = getMealByID(mealID);
+		renderSelectedMeal(selectedMeal);
+	}
 };
 
 window.addEventListener("keyup", handleKeyPress);
