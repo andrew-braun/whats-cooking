@@ -13,11 +13,13 @@ A simple recipe search app using the MealsDB API and vanilla JS.
 - Displaying modals
 - Responsive design
 - State management
+- Fade-in/fade-out animations
 
 ## Technologies/Tools
 
 - HTML5
 - CSS3
+- CSS Animations
 - Vanilla JS
 - MealsDB API
 
