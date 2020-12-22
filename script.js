@@ -77,10 +77,8 @@ const fetchRecipe = async (search) => {
 
 		if (meals === null) {
 			searchResultsHeading.innerHTML = `<p class="search-results-heading">Sorry, no results found for '${currentSearchTerm}'</p>`;
-		} else if (meals.length > 1) {
+		} else if (meals.length >= 1) {
 			await renderMealResults(meals, search);
-		} else if (meals.length === 1) {
-			await renderSelectedMeal(meals);
 		}
 	} catch (err) {
 		console.log(err);
