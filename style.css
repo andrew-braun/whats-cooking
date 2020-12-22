@@ -22,7 +22,12 @@
 	box-sizing: border-box;
 }
 
+html {
+	width: 100%;
+}
+
 body {
+	flex: 1 1 auto;
 	background: var(--bg-1);
 	color: var(--text-1);
 	font-family: "Andika New Basic", Georgia, "Times New Roman", Times, serif;
@@ -188,10 +193,14 @@ button {
 	position: absolute;
 	top: 0;
 	left: 0;
+	bottom: 0;
+	right: 0;
 	width: 100%;
+	min-height: 175vh;
 	height: 100%;
 	background: hsla(0, 0%, 0%, 0.8);
 	color: white;
+	clear: both;
 }
 
 .selected-meal__info {
