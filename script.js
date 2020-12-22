@@ -7,6 +7,8 @@ const searchInputElement = document.querySelector("#search"),
 
 let currentSearchTerm;
 let mealResults;
+let selectedMealIsOpen = false;
+
 let testMeal = {
 	idMeal: "52814",
 	strMeal: "Thai Green Curry",
@@ -115,9 +117,18 @@ const getMealByID = (id) => {
 const openSelectedMeal = () => {
 	selectedMealElement.classList.add("open");
 	selectedMealElement.classList.remove("closed");
+
+	/* Set timeout to make sure state isn't instantly set to true,
+		as window click event listener will immediately fire the close method
+		if it detects a click when selectedMealIsOpen is true
+	*/
+	setTimeout(() => {
+		selectedMealIsOpen = true;
+	}, 1);
 };
 
 const handleSelectedMealClose = () => {
+	selectedMealIsOpen = false;
 	selectedMealElement.classList.remove("open");
 	selectedMealElement.classList.add("closed");
 };
@@ -266,7 +277,13 @@ submitButtonElement.addEventListener("click", handleSubmit);
 randomButtonElement.addEventListener("click", handleRandom);
 mealResultsElement.addEventListener("click", handleMealSelect);
 window.addEventListener("click", (event) => {
-	event.target.id === "selected-meal-close-button"
-		? handleSelectedMealClose()
-		: null;
+	if (event.target.id === "selected-meal-close-button") {
+		handleSelectedMealClose();
+	} else if (
+		!selectedMealElement.contains(event.target) &&
+		event.target.id !== "search" &&
+		selectedMealIsOpen === true
+	) {
+		handleSelectedMealClose();
+	}
 });
