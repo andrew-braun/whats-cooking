@@ -120,6 +120,8 @@ const openSelectedMeal = () => {
 		as window click event listener will immediately fire the close method
 		if it detects a click when selectedMealIsOpen is true
 	*/
+
+	window.scrollTo({ top: 80, behavior: "smooth" });
 	setTimeout(() => {
 		selectedMealIsOpen = true;
 	}, 1);
