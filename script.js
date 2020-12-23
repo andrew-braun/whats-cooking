@@ -5,10 +5,12 @@ const searchInputElement = document.querySelector("#search"),
 	selectedMealElement = document.querySelector("#selected-meal"),
 	searchResultsHeading = document.querySelector("#search-results-heading");
 
+// Manage state variables
 let currentSearchTerm;
 let mealResults;
 let selectedMealIsOpen = false;
 
+// Test meal for formatting modal; delete when complete
 let testMeal = {
 	idMeal: "52814",
 	strMeal: "Thai Green Curry",
@@ -107,6 +109,7 @@ const renderMealResults = (meals) => {
 		.join("");
 };
 
+/* Search the list of meals stored in state to find the one with the matching ID */
 const getMealByID = (id) => {
 	const selectedMeal = mealResults.find((item) => item.idMeal === id);
 	return selectedMeal;
@@ -229,6 +232,10 @@ const renderSelectedMeal = (meal) => {
 			</div>
 			<div class="selected-meal__image-container">
 				<img src=${strMealThumb} alt=${strMeal} class="selected-meal__image"/>
+				<div class="selected-meal__description-container">
+					<div class="selected-meal__area recipe-card__area">${strArea}</div>
+					<div class="selected-meal__category recipe-card__category">${strCategory}</div>				
+				</div>
 			</div>
 		</div>
 		<div class="selected-meal__instructions">

@@ -11,6 +11,7 @@
 	--card-bg-1: hsla(48, 75%, 52%, 0.6);
 	--card-bg-2: hsla(346, 84%, 44%, 0.7);
 	--accent-1: hsla(346, 84%, 44%, 1);
+	--accent-2: hsla(48, 75%, 52%, 1);
 	--carmine-m-p: hsla(346, 84%, 44%, 1);
 	--green-blue-crayola: hsla(207, 70%, 48%, 1);
 	--saffron: hsla(48, 75%, 52%, 1);
@@ -179,14 +180,22 @@ button {
 }
 
 .recipe-card__area {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	flex: 1 1 50%;
-	font-family: "Merienda";
 	background: var(--card-bg-2);
+	font-family: "Merienda";
+	text-align: center;
 }
 
 .recipe-card__category {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	flex: 1 1 50%;
 	background: var(--card-bg-1);
+	text-align: center;
 }
 
 /* Selected meal details */
@@ -285,13 +294,14 @@ button {
 }
 
 .ingredient-list__measure {
-	color: var(--saffron);
+	color: var(--accent-2);
 }
 
 .selected-meal__image-container {
+	position: relative;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-end;
 	flex: 1 1 20rem;
 	max-width: 30rem;
 	margin: 2rem;
@@ -303,6 +313,20 @@ button {
 	max-width: 100%;
 	margin: 2rem 2rem 0 2rem;
 	border-radius: 0.3rem;
+}
+
+.selected-meal__description-container {
+	position: absolute;
+	display: flex;
+	width: 100%;
+	background: hsla(0, 0%, 0%, 0.8);
+	font-size: 2rem;
+}
+
+.selected-meal__category {
+}
+
+.selected-meal__area {
 }
 
 .selected-meal__instructions {
