@@ -272,6 +272,22 @@ button {
 	font-size: 1.2rem;
 }
 
+.ingredient-list__item {
+	display: flex;
+	justify-content: space-between;
+	opacity: 0.9;
+}
+
+.ingredient-list__ingredient {
+	flex: 1 1 auto;
+	padding-right: 4rem;
+	border-bottom: 1px dashed white;
+}
+
+.ingredient-list__measure {
+	color: var(--saffron);
+}
+
 .selected-meal__image-container {
 	display: flex;
 	justify-content: center;

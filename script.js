@@ -172,9 +172,11 @@ const generateIngredientList = (ingredients) => {
 	const ingredientList = ingredients
 		.map((item) => {
 			return `
-			<li><span class="ingredient-list__ingredient">${item.ingredient}</span>${
+			<li class="ingredient-list__item"><span class="ingredient-list__ingredient">${
+				item.ingredient
+			}</span>${
 				item.measure
-					? ` - <span class="ingredient-list__measure">${item.measure}</span>`
+					? `<span class="ingredient-list__measure">${item.measure}</span>`
 					: ""
 			}</li>
 		`;
