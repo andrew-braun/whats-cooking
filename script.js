@@ -267,8 +267,8 @@ const handleRandom = (event) => {
 
 // Handle key presses for searching
 const handleKeyPress = (event) => {
-	if (event.key === "Enter" && event.currentTarget === searchInputElement) {
-		console.log(event);
+	if (event.key === "Escape" && selectedMealIsOpen) {
+		handleSelectedMealClose();
 	}
 };
 
@@ -287,12 +287,11 @@ submitButtonElement.addEventListener("click", handleSubmit);
 randomButtonElement.addEventListener("click", handleRandom);
 mealResultsElement.addEventListener("click", handleMealSelect);
 window.addEventListener("click", (event) => {
-	if (event.target.id === "selected-meal-close-button") {
-		handleSelectedMealClose();
-	} else if (
-		!selectedMealElement.contains(event.target) &&
-		event.target.id !== "search" &&
-		selectedMealIsOpen === true
+	if (
+		event.target.id === "selected-meal-close-button" ||
+		(!selectedMealElement.contains(event.target) &&
+			event.target.id !== "search" &&
+			selectedMealIsOpen)
 	) {
 		handleSelectedMealClose();
 	}
