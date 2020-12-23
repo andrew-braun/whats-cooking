@@ -236,7 +236,8 @@ const renderSelectedMeal = (meal) => {
 	`;
 };
 
-// renderSelectedMeal(testMeal);
+openSelectedMeal();
+renderSelectedMeal(testMeal);
 
 // Update state on input change
 const handleInputChange = (event) => {};

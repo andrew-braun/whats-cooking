@@ -115,6 +115,7 @@ button {
 /* Search results styles */
 .search-results {
 	position: relative;
+	z-index: 5;
 }
 
 .search-results-heading__text--term {
@@ -191,16 +192,16 @@ button {
 /* Selected meal details */
 .selected-meal {
 	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	width: 100%;
-	min-height: 175vh;
-	height: 100%;
+	top: 140px;
+	left: 50%;
+	margin-left: -45%;
+	padding-bottom: 5rem;
+	width: 90%;
+	min-height: 100%;
 	background: hsla(0, 0%, 0%, 0.87);
 	color: white;
 	clear: both;
+	z-index: 10;
 }
 
 .selected-meal__info {
@@ -289,8 +290,9 @@ button {
 }
 
 .selected-meal__instructions {
-	text-align: left;
+	position: relative;
 	padding: 1rem;
+	text-align: left;
 }
 
 /* Modification Classes */
@@ -331,10 +333,13 @@ button {
 // . @media (max-width: 800px) {
 // }
 
-@media (max-width: 700px) {
+@media (max-width: 734px) {
 	.search__input {
 		font-size: 0.9rem;
 	}
+	/*.selected-meal {
+		min-height: 225vh;
+	} */
 }
 
 @media (max-width: 500px) {
