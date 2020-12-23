@@ -90,7 +90,7 @@ const renderMealResults = (meals) => {
 	// Change search results heading to include query
 	searchResultsHeading.innerHTML = `<h2 class="search-results-heading__text">
 			Search results for 
-			<span class="search-results-heading__text--term">${currentSearchTerm}</span>
+			<span class="search-results-heading__text--term">${currentSearchTerm.toLowerCase()}</span>
 		</h2>`;
 	mealResultsElement.innerHTML = meals
 		.map((meal) => {
