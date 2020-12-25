@@ -230,6 +230,14 @@ const handleMealSelect = (event) => {
 	}
 };
 
+/* Populate initial results */
+const initialDisplay = () => {
+	currentSearchTerm = "curry";
+	fetchRecipe(`search.php?s=${currentSearchTerm}`);
+};
+
+initialDisplay();
+
 window.addEventListener("keyup", handleKeyPress);
 searchInputElement.addEventListener("input", handleInputChange);
 submitButtonElement.addEventListener("click", handleSubmit);
