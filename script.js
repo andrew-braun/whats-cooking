@@ -232,7 +232,17 @@ const handleMealSelect = (event) => {
 
 /* Populate initial results */
 const initialDisplay = () => {
-	currentSearchTerm = "curry";
+	const searches = [
+		"curry",
+		"chicken",
+		"cake",
+		"carrot",
+		"potato",
+		"salmon",
+		"fish",
+		"broccoli",
+	];
+	currentSearchTerm = searches[Math.floor(Math.random() * searches.length)];
 	fetchRecipe(`search.php?s=${currentSearchTerm}`);
 };
 
