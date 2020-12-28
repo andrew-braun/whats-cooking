@@ -133,6 +133,16 @@ const generateIngredientList = (ingredients) => {
 	return ingredientList;
 };
 
+const processInstructions = (instructions) => {
+	const instructionsHTML = instructions
+		.split("\r\n")
+		.map((line) => {
+			return `<p>${line}</p>`;
+		})
+		.join("");
+	return instructionsHTML;
+};
+
 // Render single selected meal HTML
 const renderSelectedMeal = (meal) => {
 	// Open meal modal
@@ -154,6 +164,8 @@ const renderSelectedMeal = (meal) => {
 	const ingredients = processMealIngredients(meal);
 	// Generate HTML for list of ingredients to add in later
 	const ingredientList = generateIngredientList(ingredients);
+	// Turn instructions into HTML with paragraph breaks
+	const instructions = processInstructions(strInstructions);
 
 	// Set the main content for the meal recipe modal
 	selectedMealElement.innerHTML = `
@@ -184,7 +196,7 @@ const renderSelectedMeal = (meal) => {
 			</div>
 		</div>
 		<div class="selected-meal__instructions">
-			<p>${strInstructions}</p>
+			<p>${instructions}</p>
 		</div>
 	</div>
 	`;
