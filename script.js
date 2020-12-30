@@ -140,6 +140,7 @@ const processInstructions = (instructions) => {
 			return `<p>${line}</p>`;
 		})
 		.join("");
+
 	return instructionsHTML;
 };
 
@@ -202,6 +203,33 @@ const renderSelectedMeal = (meal) => {
 	`;
 };
 
+const switchMeal = (key) => {
+	console.log(key);
+	const mealIndex = mealResults.findIndex(
+		(item) => item.idMeal === selectedMeal.idMeal
+	);
+
+	const renderNextMeal = (index) => {
+		const nextMeal = mealResults[index];
+		selectedMeal = nextMeal;
+		renderSelectedMeal(nextMeal);
+	};
+
+	if (key === "ArrowRight") {
+		if (mealIndex < mealResults.length - 1) {
+			renderNextMeal(mealIndex + 1);
+		} else if (mealIndex === mealResults.length - 1) {
+			renderNextMeal(0);
+		}
+	} else if (key === "ArrowLeft") {
+		if (mealIndex > 0) {
+			renderNextMeal(mealIndex - 1);
+		} else if (mealIndex === 0) {
+			renderNextMeal(mealResults.length - 1);
+		}
+	}
+};
+
 // Update state on input change
 const handleInputChange = (event) => {};
 
@@ -228,8 +256,13 @@ const handleRandom = (event) => {
 
 // Handle key presses for searching
 const handleKeyPress = (event) => {
-	if (event.key === "Escape" && selectedMealIsOpen) {
-		handleSelectedMealClose();
+	if (selectedMealIsOpen) {
+		event.preventDefault();
+		if (event.key === "Escape") {
+			handleSelectedMealClose();
+		} else if (event.key === "ArrowRight" || "ArrowLeft") {
+			switchMeal(event.key);
+		}
 	}
 };
 
@@ -260,7 +293,7 @@ const initialDisplay = () => {
 
 initialDisplay();
 
-window.addEventListener("keyup", handleKeyPress);
+window.addEventListener("keydown", handleKeyPress);
 searchInputElement.addEventListener("input", handleInputChange);
 submitButtonElement.addEventListener("click", handleSubmit);
 randomButtonElement.addEventListener("click", handleRandom);
