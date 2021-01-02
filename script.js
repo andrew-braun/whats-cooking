@@ -177,11 +177,13 @@ const renderSelectedMeal = (meal) => {
 		<div class="selected-meal__title-container">
 			<h2>${meal.strMeal}</h2>
 			<a href="${strYoutube}" class="selected-meal__youtube"><i class="fab fa-youtube"></i></a>
-		</div>
-		 
+		</div>		 
 	</div>
 	<div class="selected-meal__body">
 		<div class="selected-meal__top">
+			<span class="switch-arrow" id="switch-arrow-back">
+				<i class="fas fa-chevron-left"></i>
+			</span>
 			<div class="selected-meal__ingredients">
 				<h3 class="selected-meal__ingredients-title">Ingredients</h3>
 				<ul class="selected-meal__ingredient-list">
@@ -195,6 +197,9 @@ const renderSelectedMeal = (meal) => {
 					<div class="selected-meal__category recipe-card__category">${strCategory}</div>				
 				</div>
 			</div>
+			<span class="switch-arrow" id="switch-arrow-forward">
+				<i class="fas fa-chevron-right"></i>
+			</span>
 		</div>
 		<div class="selected-meal__instructions">
 			<p>${instructions}</p>
@@ -215,13 +220,13 @@ const switchMeal = (key) => {
 		renderSelectedMeal(nextMeal);
 	};
 
-	if (key === "ArrowRight") {
+	if (key === "ArrowRight" || key === "forward") {
 		if (mealIndex < mealResults.length - 1) {
 			renderNextMeal(mealIndex + 1);
 		} else if (mealIndex === mealResults.length - 1) {
 			renderNextMeal(0);
 		}
-	} else if (key === "ArrowLeft") {
+	} else if (key === "ArrowLeft" || key === "back") {
 		if (mealIndex > 0) {
 			renderNextMeal(mealIndex - 1);
 		} else if (mealIndex === 0) {
@@ -298,13 +303,22 @@ searchInputElement.addEventListener("input", handleInputChange);
 submitButtonElement.addEventListener("click", handleSubmit);
 randomButtonElement.addEventListener("click", handleRandom);
 mealResultsElement.addEventListener("click", handleMealSelect);
+
 window.addEventListener("click", (event) => {
+	const target = event.target;
+	console.log(target);
 	if (
-		event.target.id === "selected-meal-close-button" ||
-		(!selectedMealElement.contains(event.target) &&
-			event.target.id !== "search" &&
+		target.id === "selected-meal-close-button" ||
+		(!selectedMealElement.contains(target) &&
+			target.id !== "search" &&
 			selectedMealIsOpen)
 	) {
 		handleSelectedMealClose();
+	} else if (target.classList.contains("switch-arrow")) {
+		if (target.id === "switch-arrow-back") {
+			switchMeal("back");
+		} else if (target.id === "switch-arrow-forward") {
+			switchMeal("forward");
+		}
 	}
 });

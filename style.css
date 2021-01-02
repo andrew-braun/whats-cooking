@@ -67,8 +67,13 @@ button {
 	background: var(--button-1);
 }
 
+svg {
+	pointer-events: all;
+}
+
 .fas {
 	color: var(button-1-text);
+	pointer-events: none;
 }
 
 .fa-youtube {
@@ -251,6 +256,36 @@ button {
 
 .selected-meal--close-button:hover {
 	filter: brightness(1.1);
+}
+
+.switch-arrow {
+	position: absolute;
+	top: 300px;
+	display: block;
+	margin: 0;
+	padding: 0;
+	font-size: 2.5rem;
+	transition: transform 0.2s ease-in-out;
+}
+
+#switch-arrow-back {
+	position: absolute;
+	left: 10px;
+}
+
+#switch-arrow-forward {
+	position: absolute;
+	right: 10px;
+}
+
+.switch-arrow:hover {
+	cursor: pointer;
+	color: var(--accent-2);
+	transform: scale(0.97);
+}
+
+.switch-arrow svg {
+	pointer-events: none;
 }
 
 .selected-meal__body {
