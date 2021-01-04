@@ -61,6 +61,10 @@ const getMealByID = (id) => {
 };
 
 const openSelectedMeal = () => {
+	if (selectedMealIsOpen) {
+		handleSelectedMealClose();
+	}
+
 	selectedMealElement.classList.remove("closed", "fade-out");
 	selectedMealElement.classList.add("open", "fade-in");
 
@@ -172,14 +176,14 @@ const renderSelectedMeal = (meal) => {
 	selectedMealElement.innerHTML = `
 
 	
-	<div class="selected-meal__info">
+	<div class="selected-meal__info" tabindex="-1">
 		<button class="selected-meal--close-button" id="selected-meal-close-button">X</button>
 		<div class="selected-meal__title-container">
 			<h2>${meal.strMeal}</h2>
-			<a href="${strYoutube}" class="selected-meal__youtube"><i class="fab fa-youtube"></i></a>
+			<a href="${strYoutube}" class="selected-meal__youtube" tabindex="-1"><i class="fab fa-youtube"></i></a>
 		</div>		 
 	</div>
-	<div class="selected-meal__body">
+	<div class="selected-meal__body" tabindex="-1">
 		<div class="selected-meal__top">
 			<span class="switch-arrow" id="switch-arrow-back">
 				<i class="fas fa-chevron-left"></i>
@@ -206,10 +210,10 @@ const renderSelectedMeal = (meal) => {
 		</div>
 	</div>
 	`;
+	selectedMealElement.focus();
 };
 
 const switchMeal = (key) => {
-	console.log(key);
 	const mealIndex = mealResults.findIndex(
 		(item) => item.idMeal === selectedMeal.idMeal
 	);
@@ -262,7 +266,6 @@ const handleRandom = (event) => {
 // Handle key presses for searching
 const handleKeyPress = (event) => {
 	if (selectedMealIsOpen) {
-		event.preventDefault();
 		if (event.key === "Escape") {
 			handleSelectedMealClose();
 		} else if (event.key === "ArrowRight" || "ArrowLeft") {
@@ -306,7 +309,6 @@ mealResultsElement.addEventListener("click", handleMealSelect);
 
 window.addEventListener("click", (event) => {
 	const target = event.target;
-	console.log(target);
 	if (
 		target.id === "selected-meal-close-button" ||
 		(!selectedMealElement.contains(target) &&
