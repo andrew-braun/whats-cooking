@@ -12,30 +12,32 @@
 	</head>
 	<body>
 		<div class="home-container">
-			<h1>What's Cooking?</h1>
-			<div class="search flex-wrapper">
-				<form class="search__form flex-wrapper" id="search-form">
-					<input
-						type="text"
-						class="search__input"
-						id="search"
-						placeholder="Look for a meal, ingredient, or other keyword!"
-					/>
-					<button
-						class="search__submit"
-						type="submit"
-						id="search-submit"
-						tabindex="-1"
-					>
-						<i class="fas fa-search"></i>
+			<header class="home-header">
+				<h1>What's Cooking?</h1>
+				<div class="search flex-wrapper">
+					<form class="search__form flex-wrapper" id="search-form">
+						<input
+							type="text"
+							class="search__input"
+							id="search"
+							placeholder="Look for a meal, ingredient, or other keyword!"
+						/>
+						<button
+							class="search__submit"
+							type="submit"
+							id="search-submit"
+							tabindex="-1"
+						>
+							<i class="fas fa-search"></i>
+						</button>
+					</form>
+					<button class="search__random" id="search-random">
+						<i class="fas fa-random"></i>
 					</button>
-				</form>
-				<button class="search__random" id="search-random">
-					<i class="fas fa-random"></i>
-				</button>
-			</div>
+				</div>
+			</header>
 			<div class="search-results">
-				<div id="search-results-heading"></div>
+				<div class="search-results-heading" id="search-results-heading"></div>
 				<div class="search-results__meals" id="meal-results"></div>
 			</div>
 		</div>

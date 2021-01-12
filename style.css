@@ -6,6 +6,8 @@
 	--text-1: white;
 	--bg-2: hsla(195, 84%, 12%, 1);
 	--text-2: white;
+	--bg-3: hsla(0, 0%, 95%, 1);
+	--text-3: hsla(0, 80%, 15%, 1);
 	--button-1: hsla(48, 75%, 52%, 1);
 	--button-1-text: white;
 	--card-bg-1: hsla(48, 75%, 52%, 0.6);
@@ -28,8 +30,8 @@ html {
 }
 
 body {
-	flex: 1 1 auto;
-	background: var(--bg-1);
+	position: relative;
+	background: var(--bg-3);
 	color: var(--text-1);
 	font-family: "Andika New Basic", Georgia, "Times New Roman", Times, serif;
 	margin: 0;
@@ -42,6 +44,7 @@ h4,
 h5,
 h6 {
 	font-family: "Merienda";
+	margin: 0;
 }
 
 input,
@@ -85,9 +88,13 @@ svg {
 }
 
 .home-container {
-	margin: auto;
 	width: 100%;
 	text-align: center;
+}
+
+.home-header {
+	padding: 2rem;
+	background: var(--bg-1);
 }
 
 /* Search Component */
@@ -123,6 +130,12 @@ svg {
 .search-results {
 	position: relative;
 	z-index: 5;
+	color: var(--text-3);
+	font-size: 1.2rem;
+}
+
+.search-results-heading {
+	padding: 1.5rem;
 }
 
 .search-results-heading__text--term {
@@ -132,7 +145,7 @@ svg {
 
 .search-results__meals {
 	display: flex;
-	justify-content: center;
+	justify-content: space-evenly;
 	flex-wrap: wrap;
 	width: clamp(320px, 80vw, 100%);
 	margin: auto;
@@ -146,8 +159,9 @@ svg {
 	position: relative;
 	max-width: 20rem;
 	height: clamp(12rem, 15rem, 20rem);
-	margin: 0.2rem;
+	margin: 0.5rem;
 	border-radius: 1rem;
+	color: var(--text-1);
 	overflow: hidden;
 }
 
